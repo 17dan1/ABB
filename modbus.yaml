@@ -21,7 +21,7 @@
         data_type: uint32
         
       - name: Modbus_Voltage
-        unique_id: Modbus_Current_1
+        unique_id: Voltage_L2
         slave: 1
         #scan_interval: 5
         address: 0x5B04
@@ -38,7 +38,7 @@
         unique_id: Current_L1
         slave: 1
         #scan_interval: 5
-        address: 0x5B04
+        address: 0x5B10
         input_type: holding
         unit_of_measurement: A         # Generale per sensors
         device_class: current           # Generale per sensors  
