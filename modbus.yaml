@@ -1,1 +1,49 @@
-caio
+# Configurazione dello slave ModBus del PMU ABB
+  - name: ABB_PMU
+    type: tcp
+    host: 192.168.188.23
+    port: 502
+    
+# Configurazione degli indirizzi
+    sensors:
+      - name: Modbus_Voltage
+        unique_id: Voltage_L1 
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B02
+        input_type: holding
+        unit_of_measurement: V          # Generale per sensors
+        device_class: voltage           # Generale per sensors
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: uint32
+        
+      - name: Modbus_Current
+        unique_id: Modbus_Current_1
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B04
+        input_type: holding
+        unit_of_measurement: V         # Generale per sensors
+        device_class: voltage           # Generale per sensors  
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: uint32
+
+  - name: Modbus_Current
+        unique_id: Current_L1
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B04
+        input_type: holding
+        unit_of_measurement: A         # Generale per sensors
+        device_class: current           # Generale per sensors  
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: uint32
