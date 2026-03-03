@@ -34,7 +34,7 @@
         precision: 1
         data_type: uint32
 
-  - name: Modbus_Current
+      - name: Modbus_Current
         unique_id: Current_L1
         slave: 1
         #scan_interval: 5
