@@ -1,49 +1,179 @@
 # Configurazione dello slave ModBus del PMU ABB
   - name: ABB_PMU
     type: tcp
-    host: 192.168.188.23
+    host: 192.16.31.126
     port: 502
     
 # Configurazione degli indirizzi
     sensors:
-      - name: Modbus_Voltage
-        unique_id: Voltage_L1 
+    
+      - name: ABB Voltage L1-N
+        unique_id: abb_voltage_L1-N
         slave: 1
         #scan_interval: 5
         address: 0x5B02
         input_type: holding
-        unit_of_measurement: V          # Generale per sensors
-        device_class: voltage           # Generale per sensors
+        unit_of_measurement: V
+        device_class: voltage
         state_class: measurement
         scale: 0.1
         offset: 0
         precision: 1
         data_type: uint32
         
-      - name: Modbus_Voltage
-        unique_id: Voltage_L2
+      - name: ABB Voltage L2-N
+        unique_id: abb_voltage_L2-N
         slave: 1
         #scan_interval: 5
         address: 0x5B04
         input_type: holding
-        unit_of_measurement: V         # Generale per sensors
-        device_class: voltage           # Generale per sensors  
+        unit_of_measurement: V
+        device_class: voltage
         state_class: measurement
         scale: 0.1
         offset: 0
         precision: 1
         data_type: uint32
-
-      - name: Modbus_Current
-        unique_id: Current_L1
+        
+      - name: ABB Voltage L3-N
+        unique_id: abb_voltage_L3-N
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B06
+        input_type: holding
+        unit_of_measurement: V
+        device_class: voltage
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: uint32
+        
+        
+      - name: ABB Current L1
+        unique_id: abb_current_L1
         slave: 1
         #scan_interval: 5
         address: 0x5B10
         input_type: holding
-        unit_of_measurement: A         # Generale per sensors
-        device_class: current           # Generale per sensors  
+        unit_of_measurement: A
+        device_class: current
+        state_class: measurement
+        scale: 0.01
+        offset: 0
+        precision: 1
+        data_type: uint32
+        
+      - name: ABB Current L2
+        unique_id: abb_current_L2
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B12
+        input_type: holding
+        unit_of_measurement: A
+        device_class: current
+        state_class: measurement
+        scale: 0.01
+        offset: 0
+        precision: 1
+        data_type: uint32
+        
+      - name: ABB Current L3
+        unique_id: abb_current_L3
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B14
+        input_type: holding
+        unit_of_measurement: A
+        device_class: current
+        state_class: measurement
+        scale: 0.01
+        offset: 0
+        precision: 1
+        data_type: uint32
+        
+
+      - name: ABB Phase Voltage L1
+        unique_id: abb_phase_voltage_L1
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B37
+        input_type: holding
+        unit_of_measurement: °
+        device_class: None
         state_class: measurement
         scale: 0.1
         offset: 0
         precision: 1
-        data_type: uint32
+        data_type: int16
+        
+      - name: ABB Phase Voltage L2
+        unique_id: abb_phase_voltage_L2
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B38
+        input_type: holding
+        unit_of_measurement: °
+        device_class: None
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: int16 
+        
+      - name: ABB Phase Voltage L3
+        unique_id: abb_phase_voltage_L3
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B39
+        input_type: holding
+        unit_of_measurement: °
+        device_class: None
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: int16
+        
+        
+      - name: ABB Phase Current L1
+        unique_id: abb_phase_current_L1
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B3D
+        input_type: holding
+        unit_of_measurement: °
+        device_class: None
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: int16
+        
+      - name: ABB Phase Current L2
+        unique_id: abb_phase_current_L2
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B3E
+        input_type: holding
+        unit_of_measurement: °
+        device_class: None
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: int16
+        
+      - name: ABB Phase Current L3
+        unique_id: abb_phase_current_L3
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B3F
+        input_type: holding
+        unit_of_measurement: °
+        device_class: None
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: int16
