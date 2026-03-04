@@ -1,7 +1,7 @@
 # Configurazione dello slave ModBus del PMU ABB
   - name: ABB_PMU
     type: tcp
-    host: 192.16.31.126
+    host: 192.168.188.44
     port: 502
     
 # Configurazione degli indirizzi
@@ -100,7 +100,6 @@
         address: 0x5B37
         input_type: holding
         unit_of_measurement: °
-        device_class: None
         state_class: measurement
         scale: 0.1
         offset: 0
@@ -114,7 +113,6 @@
         address: 0x5B38
         input_type: holding
         unit_of_measurement: °
-        device_class: None
         state_class: measurement
         scale: 0.1
         offset: 0
@@ -128,7 +126,6 @@
         address: 0x5B39
         input_type: holding
         unit_of_measurement: °
-        device_class: None
         state_class: measurement
         scale: 0.1
         offset: 0
@@ -143,7 +140,6 @@
         address: 0x5B3D
         input_type: holding
         unit_of_measurement: °
-        device_class: None
         state_class: measurement
         scale: 0.1
         offset: 0
@@ -157,7 +153,6 @@
         address: 0x5B3E
         input_type: holding
         unit_of_measurement: °
-        device_class: None
         state_class: measurement
         scale: 0.1
         offset: 0
@@ -171,9 +166,10 @@
         address: 0x5B3F
         input_type: holding
         unit_of_measurement: °
-        device_class: None
         state_class: measurement
         scale: 0.1
         offset: 0
         precision: 1
         data_type: int16
+        
+        
