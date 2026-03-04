@@ -1,3 +1,4 @@
+
 # Loads default set of integrations. Do not remove.
 default_config:
 
@@ -11,3 +12,18 @@ scene: !include scenes.yaml
 
 # Includo in file di configurazione della comuncazione ModBus
 modbus: !include modbus.yaml
+
+homeassistant:
+  customize:
+    sensor.abb_phase_voltage_l1:
+      icon: mdi:angle-acute
+    sensor.abb_phase_voltage_l2:
+      icon: mdi:angle-acute
+    sensor.abb_phase_voltage_l3:
+      icon: mdi:angle-acute
+    sensor.abb_phase_current_l1:
+      icon: mdi:angle-acute
+    sensor.abb_phase_current_l2:
+      icon: mdi:angle-acute
+    sensor.abb_phase_current_l3:
+      icon: mdi:angle-acute
