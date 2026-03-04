@@ -1,0 +1,68 @@
+type: custom:plotly-graph
+raw_plotly_config: true
+refresh_interval: 2
+entities:
+  - entity: sensor.abb_voltage_l1_n
+    internal: true
+    fn: >-
+      $fn ({ hass, vars }) => vars.v1 =
+      Number(hass.states['sensor.abb_voltage_l1_n'].state)
+  - entity: sensor.abb_phase_voltage_l1
+    internal: true
+    fn: >-
+      $fn ({ hass, vars }) => vars.ph_v1 =
+      Number(hass.states['sensor.abb_phase_voltage_l1'].state)
+  - entity: sensor.abb_voltage_l2_n
+    internal: true
+    fn: >-
+      $fn ({ hass, vars }) => vars.v2 =
+      Number(hass.states['sensor.abb_voltage_l2_n'].state)
+  - entity: sensor.abb_phase_voltage_l2
+    internal: true
+    fn: >-
+      $fn ({ hass, vars }) => vars.ph_v2 =
+      Number(hass.states['sensor.abb_phase_voltage_l2'].state)
+  - entity: sensor.abb_voltage_l3_n
+    internal: true
+    fn: >-
+      $fn ({ hass, vars }) => vars.v3 =
+      Number(hass.states['sensor.abb_voltage_l3_n'].state)
+  - entity: sensor.abb_phase_voltage_l3
+    internal: true
+    fn: >-
+      $fn ({ hass, vars }) => vars.ph_v3 =
+      Number(hass.states['sensor.abb_phase_voltage_l3'].state)
+  - entity: sensor.abb_voltage_l1_n
+    type: scatterpolar
+    mode: lines
+    name: V1
+    r: $fn ({ vars }) => [0, vars.v1]
+    theta: $fn ({ vars }) => [0, vars.ph_v1]
+    line:
+      color: blue
+      width: 4
+  - entity: sensor.abb_voltage_l2_n
+    type: scatterpolar
+    mode: lines
+    name: V2
+    r: $fn ({ vars }) => [0, vars.v2]
+    theta: $fn ({ vars }) => [0, vars.ph_v2]
+    line:
+      color: lawngreen
+      width: 4
+  - entity: sensor.abb_voltage_l3_n
+    type: scatterpolar
+    mode: lines
+    name: V3
+    r: $fn ({ vars }) => [0, vars.v3]
+    theta: $fn ({ vars }) => [0, vars.ph_v3]
+    line:
+      color: red
+      width: 4
+layout:
+  title: Diagramma Fasoriale
+  polar:
+    radialaxis:
+      range:
+        - 0
+        - 260
