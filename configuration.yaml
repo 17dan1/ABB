@@ -15,15 +15,31 @@ modbus: !include modbus.yaml
 
 homeassistant:
   customize:
-    sensor.abb_phase_voltage_l1:
+    sensor.abb_angle_power_total:
       icon: mdi:angle-acute
-    sensor.abb_phase_voltage_l2:
+    sensor.abb_angle_power_l1:
       icon: mdi:angle-acute
-    sensor.abb_phase_voltage_l3:
+    sensor.abb_angle_power_l2:
       icon: mdi:angle-acute
-    sensor.abb_phase_current_l1:
+    sensor.abb_angle_power_l3:
       icon: mdi:angle-acute
-    sensor.abb_phase_current_l2:
+    sensor.abb_angle_voltage_l1:
       icon: mdi:angle-acute
-    sensor.abb_phase_current_l3:
+    sensor.abb_angle_voltage_l2:
+      icon: mdi:angle-acute
+    sensor.abb_angle_voltage_l3:
+      icon: mdi:angle-acute
+    sensor.abb_angle_current_l1:
+      icon: mdi:angle-acute
+    sensor.abb_angle_current_l2:
+      icon: mdi:angle-acute
+    sensor.abb_angle_current_l3:
+      icon: mdi:angle-acute
+    sensor.abb_cosphi_total:
+      icon: mdi:angle-acute
+    sensor.abb_cosphi_l1:
+      icon: mdi:angle-acute
+    sensor.abb_cosphi_l2:
+      icon: mdi:angle-acute
+    sensor.abb_cosphi_l3:
       icon: mdi:angle-acute
