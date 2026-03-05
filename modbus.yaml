@@ -91,7 +91,193 @@
         offset: 0
         precision: 1
         data_type: uint32
+
+        name: ABB Current L3
+        unique_id: abb_current_L3
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B14
+        input_type: holding
+        unit_of_measurement: A
+        device_class: current
+        state_class: measurement
+        scale: 0.01
+        offset: 0
+        precision: 1
+        data_type: uint32
+
         
+    #########################################################
+        name: ABB Active Power Total
+        unique_id: abb_active_power_total
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B1A
+        input_type: holding
+        unit_of_measurement: W
+        state_class: power
+        scale: 0.01
+        offset: 0
+        precision: 2
+        data_type: int16
+
+        name: ABB Active Power L1
+        unique_id: abb_active_power_l1
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B1C
+        input_type: holding
+        unit_of_measurement: W
+        state_class: power
+        scale: 0.01
+        offset: 0
+        precision: 2
+        data_type: int32
+
+        name: ABB Active Power L2
+        unique_id: abb_active_power_l2
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B1E
+        input_type: holding
+        unit_of_measurement: W
+        state_class: power
+        scale: 0.01
+        offset: 0
+        precision: 2
+        data_type: int32
+
+        name: ABB Active Power L3
+        unique_id: abb_active_power_l3
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B20
+        input_type: holding
+        unit_of_measurement: W
+        state_class: power
+        scale: 0.01
+        offset: 0
+        precision: 2
+        data_type: int132
+    
+        name: ABB Reactive Power Total
+        unique_id: abb_reactive_power_total
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B22
+        input_type: holding
+        unit_of_measurement: var
+        state_class: reactive_power
+        scale: 0.01
+        offset: 0
+        precision: 2
+        data_type: int32
+
+        name: ABB Reactive Power L1
+        unique_id: abb_reactive_power_l1
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B24
+        input_type: holding
+        unit_of_measurement: var
+        state_class: reactive_power
+        scale: 0.01
+        offset: 0
+        precision: 2
+        data_type: int32
+
+        name: ABB Reactive Power L2
+        unique_id: abb_reactive_power_l2
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B26
+        input_type: holding
+        unit_of_measurement: var
+        state_class: reactive_power
+        scale: 0.01
+        offset: 0
+        precision: 2
+        data_type: int32
+
+        name: ABB Reactive Power L3
+        unique_id: abb_reactive_power_l3
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B28
+        input_type: holding
+        unit_of_measurement: var
+        state_class: reactive_power
+        scale: 0.01
+        offset: 0
+        precision: 2
+        data_type: int32
+    
+        name: ABB Apparent Power Total
+        unique_id: abb_apparent_power_total
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B2A
+        input_type: holding
+        unit_of_measurement: VA
+        state_class: apparent_power
+        scale: 0.01
+        offset: 0
+        precision: 2
+        data_type: int32
+
+        name: ABB Apparent Power L1
+        unique_id: abb_apparent_power_l1
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B2C
+        input_type: holding
+        unit_of_measurement: VA
+        state_class: apparent_power
+        scale: 0.01
+        offset: 0
+        precision: 2
+        data_type: int32
+
+        name: ABB Apparent Power L2
+        unique_id: abb_apparent_power_l2
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B2E
+        input_type: holding
+        unit_of_measurement: VA
+        state_class: apparent_power
+        scale: 0.01
+        offset: 0
+        precision: 2
+        data_type: int32
+
+        name: ABB Apparent Power L3
+        unique_id: abb_apparent_power_l3
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B30
+        input_type: holding
+        unit_of_measurement: VA
+        state_class: apparent_power
+        scale: 0.01
+        offset: 0
+        precision: 2
+        data_type: int32
+
+        name: ABB Frequency
+        unique_id: abb_frequency
+        slave: 1
+        #scan_interval: 5
+        address: 0x5B32
+        input_type: holding
+        unit_of_measurement: Hz
+        state_class: frequency
+        scale: 0.01
+        offset: 0
+        precision: 2
+        data_type: uint16
+    
+    #########################################################   
 
       - name: ABB Phase Voltage L1
         unique_id: abb_phase_voltage_L1
@@ -171,5 +357,7 @@
         offset: 0
         precision: 1
         data_type: int16
+
+        
         
         
