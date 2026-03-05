@@ -7,176 +7,176 @@
 # Configurazione degli indirizzi
     sensors:
     
-      - name: ABB Total active energy
-        unique_id: abb_total_active_energy
+      - name: ABB Active Energy Total
+        unique_id: abb_active_energy_total
         slave: 1
         #scan_interval: 5
         address: 0x5000
         input_type: holding
         unit_of_measurement: kWh
-        device_class: voltage
+        device_class: energy
         state_class: measurement
         scale: 0.01
         offset: 0
         precision: 2
         data_type: uint64
         
-      - name: ABB Total reactive energy
-        unique_id: abb_total_reactive_energy
+      - name: ABB Reactive Energy Total
+        unique_id: abb_reactive_energy_total
         slave: 1
         #scan_interval: 5
         address: 0x500C
         input_type: holding
         unit_of_measurement: kvarh
-        device_class: voltage
+        device_class: reactive_energy
         state_class: measurement
         scale: 0.01
         offset: 0
         precision: 2
         data_type: uint64
         
-      - name: ABB Total apparent energy
-        unique_id: abb_total_apparent_energy
+      - name: ABB Apparent Energy Total
+        unique_id: abb_apparent_energy_total
         slave: 1
         #scan_interval: 5
         address: 0x5018
         input_type: holding
         unit_of_measurement: kVA
-        device_class: voltage
+        device_class: energy
         state_class: measurement
         scale: 0.01
         offset: 0
         precision: 2
         data_type: uint64
         
-      - name: ABB active energy import L1
-        unique_id: abb_active_energy_import_L1
+      - name: ABB Active Energy L1
+        unique_id: abb_active_energy_l1
         slave: 1
         #scan_interval: 5
         address: 0x5460
         input_type: holding
         unit_of_measurement: kWh
-        device_class: voltage
+        device_class: energy
         state_class: measurement
         scale: 0.01
         offset: 0
         precision: 2
         data_type: uint64   
         
-      - name: ABB active energy import L2
-        unique_id: abb_active_energy_import_L2
+      - name: ABB Active Energy L2
+        unique_id: abb_active_energy_l2
         slave: 1
         #scan_interval: 5
         address: 0x5464
         input_type: holding
         unit_of_measurement: kWh
-        device_class: voltage
+        device_class: energy
         state_class: measurement
         scale: 0.01
         offset: 0
         precision: 2
         data_type: uint64  
         
-      - name: ABB active energy import L3
-        unique_id: abb_active_energy_import_L3
+      - name: ABB Active Energy L3
+        unique_id: abb_active_energy_l3
         slave: 1
         #scan_interval: 5
         address: 0x5468
         input_type: holding
         unit_of_measurement: kWh
-        device_class: voltage
+        device_class: energy
         state_class: measurement
         scale: 0.01
         offset: 0
         precision: 2
         data_type: uint64    
         
-      - name: ABB reactive energy import L1
-        unique_id: abb_reactive_energy_import_L1
+      - name: ABB Reactive Energy L1
+        unique_id: abb_reactive_energy_l1
         slave: 1
         #scan_interval: 5
         address: 0x5484
         input_type: holding
         unit_of_measurement: kvarh
-        device_class: voltage
+        device_class: reactive_energy
         state_class: measurement
         scale: 0.01
         offset: 0
         precision: 2
         data_type: uint64    
         
-      - name: ABB reactive energy import L2
-        unique_id: abb_reactive_energy_import_L2
+      - name: ABB Reactive Energy L2
+        unique_id: abb_reactive_energy_l2
         slave: 1
         #scan_interval: 5
         address: 0x5488
         input_type: holding
         unit_of_measurement: kvarh
-        device_class: voltage
+        device_class: reactive_energy
         state_class: measurement
         scale: 0.01
         offset: 0
         precision: 2
         data_type: uint64     
 
-      - name: ABB reactive energy import L3
-        unique_id: abb_reactive_energy_import_L3
+      - name: ABB Reactive Energy L3
+        unique_id: abb_reactive_energy_l3
         slave: 1
         #scan_interval: 5
         address: 0x548C
         input_type: holding
         unit_of_measurement: kvarh
-        device_class: voltage
+        device_class: reactive_energy
         state_class: measurement
         scale: 0.01
         offset: 0
         precision: 2
         data_type: uint64  
         
-      - name: ABB apparent energy import L1
-        unique_id: abb_apparent_energy_import_L1
+      - name: ABB Apparent Energy L1
+        unique_id: abb_apparent_energy_l1
         slave: 1
         #scan_interval: 5
         address: 0x54A8
         input_type: holding
         unit_of_measurement: kVA
-        device_class: voltage
+        device_class: energy
         state_class: measurement
         scale: 0.01
         offset: 0
         precision: 2
         data_type: uint64        
         
-      - name: ABB apparent energy import L2
-        unique_id: abb_apparent_energy_import_L2
+      - name: ABB Apparent Energy L2
+        unique_id: abb_apparent_energy_l2
         slave: 1
         #scan_interval: 5
         address: 0x54AC
         input_type: holding
         unit_of_measurement: kVA
-        device_class: voltage
+        device_class: energy
         state_class: measurement
         scale: 0.01
         offset: 0
         precision: 2
         data_type: uint64 
  
-      - name: ABB apparent energy import L3
-        unique_id: abb_apparent_energy_import_L3
+      - name: ABB Apparent Energy L3
+        unique_id: abb_apparent_energy_l3
         slave: 1
         #scan_interval: 5
         address: 0x54B0
         input_type: holding
         unit_of_measurement: kVA
-        device_class: voltage
+        device_class: energy
         state_class: measurement
         scale: 0.01
         offset: 0
         precision: 2
         data_type: uint64 
         
-      - name: ABB three phase system voltage
-        unique_id: abb_three_phase_system_voltage
+      - name: ABB System Voltage
+        unique_id: abb_system_voltage
         slave: 1
         #scan_interval: 5
         address: 0x5B00
@@ -186,12 +186,11 @@
         state_class: measurement
         scale: 0.1
         offset: 0
-        precision: 2
+        precision: 1
         data_type: uint32
-        
        
       - name: ABB Voltage L1-N
-        unique_id: abb_voltage_L1-N
+        unique_id: abb_voltage_l1_n
         slave: 1
         #scan_interval: 5
         address: 0x5B02
@@ -205,7 +204,7 @@
         data_type: uint32
         
       - name: ABB Voltage L2-N
-        unique_id: abb_voltage_L2-N
+        unique_id: abb_voltage_l2_n
         slave: 1
         #scan_interval: 5
         address: 0x5B04
@@ -219,7 +218,7 @@
         data_type: uint32
         
       - name: ABB Voltage L3-N
-        unique_id: abb_voltage_L3-N
+        unique_id: abb_voltage_l3_n
         slave: 1
         #scan_interval: 5
         address: 0x5B06
@@ -232,8 +231,8 @@
         precision: 1
         data_type: uint32
         
-      - name: ABB Line Voltage L1-L2
-        unique_id: abb_line_voltage_L1-L2
+      - name: ABB Voltage L1-L2
+        unique_id: abb_voltage_l1_l2
         slave: 1
         #scan_interval: 5
         address: 0x5B08
@@ -246,8 +245,8 @@
         precision: 1
         data_type: uint32       
         
-      - name: ABB Line Voltage L3-L2
-        unique_id: abb_line_voltage_L3-L2
+      - name: ABB Voltage L3-L2
+        unique_id: abb_voltage_l3_l2
         slave: 1
         #scan_interval: 5
         address: 0x5B0A
@@ -260,8 +259,8 @@
         precision: 1
         data_type: uint32        
         
-      - name: ABB Line Voltage L1-L3
-        unique_id: abb_line_voltage_L1-L3
+      - name: ABB Voltage L1-L3
+        unique_id: abb_voltage_l1_l3
         slave: 1
         #scan_interval: 5
         address: 0x5B0C
@@ -274,14 +273,14 @@
         precision: 1
         data_type: uint32                
  
-      - name: ABB three phase system current
-        unique_id: abb_three_phase_system_current
+      - name: ABB System Current
+        unique_id: abb_system_current
         slave: 1
         #scan_interval: 5
         address: 0x5B0E
         input_type: holding
         unit_of_measurement: A
-        device_class: voltage
+        device_class: current
         state_class: measurement
         scale: 0.01
         offset: 0
@@ -289,7 +288,7 @@
         data_type: uint32 
         
       - name: ABB Current L1
-        unique_id: abb_current_L1
+        unique_id: abb_current_l1
         slave: 1
         #scan_interval: 5
         address: 0x5B10
@@ -299,11 +298,11 @@
         state_class: measurement
         scale: 0.01
         offset: 0
-        precision: 1
+        precision: 2
         data_type: uint32
         
       - name: ABB Current L2
-        unique_id: abb_current_L2
+        unique_id: abb_current_l2
         slave: 1
         #scan_interval: 5
         address: 0x5B12
@@ -313,11 +312,11 @@
         state_class: measurement
         scale: 0.01
         offset: 0
-        precision: 1
+        precision: 2
         data_type: uint32
         
       - name: ABB Current L3
-        unique_id: abb_current_L3
+        unique_id: abb_current_l3
         slave: 1
         #scan_interval: 5
         address: 0x5B14
@@ -327,11 +326,11 @@
         state_class: measurement
         scale: 0.01
         offset: 0
-        precision: 1
+        precision: 2
         data_type: uint32
         
       - name: ABB Current N
-        unique_id: abb_current_N
+        unique_id: abb_current_n
         slave: 1
         #scan_interval: 5
         address: 0x5B16
@@ -341,7 +340,7 @@
         state_class: measurement
         scale: 0.01
         offset: 0
-        precision: 1
+        precision: 2
         data_type: uint32       
         
       - name: ABB Active Power Total
@@ -356,7 +355,7 @@
         scale: 0.01
         offset: 0
         precision: 2
-        data_type: int16
+        data_type: int32
 
       - name: ABB Active Power L1
         unique_id: abb_active_power_l1
@@ -367,6 +366,7 @@
         unit_of_measurement: W
         device_class: power
         state_class: measurement
+        scale: 0.01
         offset: 0
         precision: 2
         data_type: int32
