@@ -13,6 +13,46 @@ scene: !include scenes.yaml
 # Includo in file di configurazione della comuncazione ModBus
 modbus: !include modbus.yaml
 
+
+# Utility meter energia
+# utility_meter:
+  # # Active energy
+  # abb_l1_active_energy_meter:
+    # name: ABB L1 Active Energy Meter
+    # source: sensor.abb_active_energy_l1
+    # cycle: daily
+    # periodically_resetting: true
+    # net_consumption: false
+    # delta_values: false
+  # abb_l2_active_energy_meter:
+    # name: ABB L2 Active Energy Meter
+    # source: sensor.abb_active_energy_l2
+    # cycle: daily
+    # periodically_resetting: true
+    # net_consumption: false
+    # delta_values: false
+  # abb_l3_active_energy_meter:
+    # name: ABB L3 Active Energy Meter
+    # source: sensor.abb_active_energy_l3
+    # cycle: daily
+    # periodically_resetting: true
+    # net_consumption: false
+    # delta_values: false
+  # Active energy
+  # energy:
+    # source: sensor.abb_reactive_energy_l1
+    # unique_id: abb_l1_reactive_energy_meter
+    # cycle: daily
+  # energy:
+    # source: sensor.abb_reactive_energy_l2
+    # unique_id: abb_l3_reactive_energy_meter
+    # cycle: daily
+  # energy:
+    # source: sensor.abb_reactive_energy_l3
+    # unique_id: abb_l3_reactive_energy_meter
+    # cycle: daily
+
+# Customizzazione delle icone sensori ABB-Modbus
 homeassistant:
   customize:
     sensor.abb_angle_power_total:
@@ -43,3 +83,143 @@ homeassistant:
       icon: mdi:angle-acute
     sensor.abb_cosphi_l3:
       icon: mdi:angle-acute
+    sensor.abb_voltage_l1_thd:
+      icon: mdi:alpha-t-box-outline
+    sensor.abb_voltage_l2_thd:
+      icon: mdi:alpha-t-box-outline
+    sensor.abb_voltage_l3_thd:
+      icon: mdi:alpha-t-box-outline
+    sensor.abb_voltage_l1_l2_thd:
+      icon: mdi:alpha-t-box-outline
+    sensor.abb_voltage_l1_l3_thd:
+      icon: mdi:alpha-t-box-outline
+    sensor.abb_voltage_l3_l2_thd:
+      icon: mdi:alpha-t-box-outline
+    sensor.abb_current_l1_thd:
+      icon: mdi:alpha-t-box-outline
+    sensor.abb_current_l2_thd:
+      icon: mdi:alpha-t-box-outline
+    sensor.abb_current_l3_thd:
+      icon: mdi:alpha-t-box-outline
+    sensor.abb_current_n_thd:
+      icon: mdi:alpha-t-box-outline
+    sensor.abb_armonic_voltage_l1_2nd:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_3rt:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_4th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_5th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_6th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_7th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l2_2nd:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l2_3rd:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l2_4th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l2_5th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l2_6th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l2_7th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_2nd:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_3rd:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_4th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_5th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_6th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_7th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l2_2nd:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l2_3rd:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l2_4th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l2_5th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l2_6th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l2_7th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l3_2nd:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l3_3rd:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l3_4th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l3_5th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l3_6th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l3_7th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_l2_2nd:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_l2_3rd:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_l2_4th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_l2_5th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_l2_6th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_l2_7th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l1_2nd:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l1_3rd:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l1_4th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l1_5th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l1_6th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l1_7th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l2_2nd:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l2_3rd:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l2_4th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l2_5th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l2_6th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l2_7th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l3_2nd:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l3_3rd:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l3_4th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l3_5th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l3_6th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l3_7th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_n_2nd:
+      icon: mdi:poll
+    sensor.abb_armonic_current_n_3rd:
+      icon: mdi:poll
+    sensor.abb_armonic_current_n_4th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_n_5th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_n_6th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_n_7th:
+      icon: mdi:poll
