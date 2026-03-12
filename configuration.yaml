@@ -1,2082 +1,241 @@
-# Configurazione dello slave ModBus del PMU ABB
-  - name: ABB_PMU
-    type: tcp
-    host: 192.168.188.44
-    port: 502
+
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+# Includo in file di configurazione della comuncazione ModBus
+modbus: !include modbus.yaml
+
+
+# Utility meter energia
+utility_meter:
+  # Active energy
+  abb_l1_active_energy_meter:
+    name: ABB L1 Active Energy Meter
+    unique_id: abb_l1_active_energy_meter
+    source: sensor.abb_active_energy_l1
+    cycle: daily
+    periodically_resetting: true
+    net_consumption: false
+    delta_values: false
+  abb_l2_active_energy_meter:
+    name: ABB L2 Active Energy Meter
+    unique_id: abb_l2_active_energy_meter
+    source: sensor.abb_active_energy_l2
+    cycle: daily
+    periodically_resetting: true
+    net_consumption: false
+    delta_values: false
+  abb_l3_active_energy_meter:
+    name: ABB L3 Active Energy Meter
+    unique_id: abb_l3_active_energy_meter
+    source: sensor.abb_active_energy_l3
+    cycle: daily
+    periodically_resetting: true
+    net_consumption: false
+    delta_values: false
     
-# Configurazione degli indirizzi
-    sensors:
-# Energy Values
+ # Reactive energy
+  abb_l1_reactive_energy_meter:
+    name: ABB L1 Rective Energy Meter
+    source: sensor.abb_reactive_energy_l1
+    unique_id: abb_l1_reactive_energy_meter
+    cycle: daily
+    periodically_resetting: true
+    net_consumption: false
+    delta_values: false
+  abb_l2_reactive_energy_meter:
+    name: ABB L2 Rective Energy Meter
+    source: sensor.abb_reactive_energy_l2
+    unique_id: abb_l3_reactive_energy_meter
+    cycle: daily
+    periodically_resetting: true
+    net_consumption: false
+    delta_values: false
+  abb_l3_reactive_energy_meter:
+    name: ABB L3 Rective Energy Meter
+    source: sensor.abb_reactive_energy_l3
+    unique_id: abb_l3_reactive_energy_meter
+    cycle: daily
+    periodically_resetting: true
+    net_consumption: false
+    delta_values: false
 
-
-      - name: ABB Active Energy Total
-        unique_id: abb_active_energy_total
-        slave: 1
-        #scan_interval: 5
-        address: 0x5000
-        input_type: holding
-        unit_of_measurement: kWh
-        device_class: energy
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: uint64
-        
-      - name: ABB Reactive Energy Total
-        unique_id: abb_reactive_energy_total
-        slave: 1
-        #scan_interval: 5
-        address: 0x500C
-        input_type: holding
-        unit_of_measurement: kvarh
-        device_class: reactive_energy
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: uint64
-        
-      - name: ABB Apparent Energy Total
-        unique_id: abb_apparent_energy_total
-        slave: 1
-        #scan_interval: 5
-        address: 0x5018
-        input_type: holding
-        unit_of_measurement: kVA
-        device_class: energy
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: uint64
-        
-      - name: ABB Active Energy L1
-        unique_id: abb_active_energy_l1
-        slave: 1
-        #scan_interval: 5
-        address: 0x5460
-        input_type: holding
-        unit_of_measurement: kWh
-        device_class: energy
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: uint64   
-        
-      - name: ABB Active Energy L2
-        unique_id: abb_active_energy_l2
-        slave: 1
-        #scan_interval: 5
-        address: 0x5464
-        input_type: holding
-        unit_of_measurement: kWh
-        device_class: energy
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: uint64  
-        
-      - name: ABB Active Energy L3
-        unique_id: abb_active_energy_l3
-        slave: 1
-        #scan_interval: 5
-        address: 0x5468
-        input_type: holding
-        unit_of_measurement: kWh
-        device_class: energy
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: uint64    
-        
-      - name: ABB Reactive Energy L1
-        unique_id: abb_reactive_energy_l1
-        slave: 1
-        #scan_interval: 5
-        address: 0x5484
-        input_type: holding
-        unit_of_measurement: kvarh
-        device_class: reactive_energy
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: uint64    
-        
-      - name: ABB Reactive Energy L2
-        unique_id: abb_reactive_energy_l2
-        slave: 1
-        #scan_interval: 5
-        address: 0x5488
-        input_type: holding
-        unit_of_measurement: kvarh
-        device_class: reactive_energy
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: uint64     
-
-      - name: ABB Reactive Energy L3
-        unique_id: abb_reactive_energy_l3
-        slave: 1
-        #scan_interval: 5
-        address: 0x548C
-        input_type: holding
-        unit_of_measurement: kvarh
-        device_class: reactive_energy
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: uint64  
-        
-      - name: ABB Apparent Energy L1
-        unique_id: abb_apparent_energy_l1
-        slave: 1
-        #scan_interval: 5
-        address: 0x54A8
-        input_type: holding
-        unit_of_measurement: kVA
-        device_class: energy
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: uint64        
-        
-      - name: ABB Apparent Energy L2
-        unique_id: abb_apparent_energy_l2
-        slave: 1
-        #scan_interval: 5
-        address: 0x54AC
-        input_type: holding
-        unit_of_measurement: kVA
-        device_class: energy
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: uint64 
- 
-      - name: ABB Apparent Energy L3
-        unique_id: abb_apparent_energy_l3
-        slave: 1
-        #scan_interval: 5
-        address: 0x54B0
-        input_type: holding
-        unit_of_measurement: kVA
-        device_class: energy
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: uint64 
-
-# Voltage Values
-
-      - name: ABB System Voltage
-        unique_id: abb_system_voltage
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B00
-        input_type: holding
-        unit_of_measurement: V
-        device_class: voltage
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint32
-       
-      - name: ABB Voltage L1-N
-        unique_id: abb_voltage_l1_n
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B02
-        input_type: holding
-        unit_of_measurement: V
-        device_class: voltage
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint32
-        
-      - name: ABB Voltage L2-N
-        unique_id: abb_voltage_l2_n
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B04
-        input_type: holding
-        unit_of_measurement: V
-        device_class: voltage
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint32
-        
-      - name: ABB Voltage L3-N
-        unique_id: abb_voltage_l3_n
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B06
-        input_type: holding
-        unit_of_measurement: V
-        device_class: voltage
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint32
-        
-      - name: ABB Voltage L1-L2
-        unique_id: abb_voltage_l1_l2
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B08
-        input_type: holding
-        unit_of_measurement: V
-        device_class: voltage
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint32       
-        
-      - name: ABB Voltage L3-L2
-        unique_id: abb_voltage_l3_l2
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B0A
-        input_type: holding
-        unit_of_measurement: V
-        device_class: voltage
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint32        
-        
-      - name: ABB Voltage L1-L3
-        unique_id: abb_voltage_l1_l3
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B0C
-        input_type: holding
-        unit_of_measurement: V
-        device_class: voltage
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint32                
- 
-# Current Values 
- 
-      - name: ABB System Current
-        unique_id: abb_system_current
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B0E
-        input_type: holding
-        unit_of_measurement: A
-        device_class: current
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: uint32 
-        
-      - name: ABB Current L1
-        unique_id: abb_current_l1
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B10
-        input_type: holding
-        unit_of_measurement: A
-        device_class: current
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: uint32
-        
-      - name: ABB Current L2
-        unique_id: abb_current_l2
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B12
-        input_type: holding
-        unit_of_measurement: A
-        device_class: current
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: uint32
-        
-      - name: ABB Current L3
-        unique_id: abb_current_l3
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B14
-        input_type: holding
-        unit_of_measurement: A
-        device_class: current
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: uint32
-        
-      - name: ABB Current N
-        unique_id: abb_current_n
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B16
-        input_type: holding
-        unit_of_measurement: A
-        device_class: current
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: uint32 
-
-# Power Values        
-        
-      - name: ABB Active Power Total
-        unique_id: abb_active_power_total
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B1A
-        input_type: holding
-        unit_of_measurement: W
-        device_class: power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32
-
-      - name: ABB Active Power L1
-        unique_id: abb_active_power_l1
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B1C
-        input_type: holding
-        unit_of_measurement: W
-        device_class: power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32
-
-      - name: ABB Active Power L2
-        unique_id: abb_active_power_l2
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B1E
-        input_type: holding
-        unit_of_measurement: W
-        device_class: power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32
-
-      - name: ABB Active Power L3
-        unique_id: abb_active_power_l3
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B20
-        input_type: holding
-        unit_of_measurement: W
-        device_class: power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32
-    
-      - name: ABB Reactive Power Total
-        unique_id: abb_reactive_power_total
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B22
-        input_type: holding
-        unit_of_measurement: var
-        device_class: reactive_power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32
-
-      - name: ABB Reactive Power L1
-        unique_id: abb_reactive_power_l1
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B24
-        input_type: holding
-        unit_of_measurement: var
-        device_class: reactive_power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32
-
-      - name: ABB Reactive Power L2
-        unique_id: abb_reactive_power_l2
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B26
-        input_type: holding
-        unit_of_measurement: var
-        device_class: reactive_power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32
-
-      - name: ABB Reactive Power L3
-        unique_id: abb_reactive_power_l3
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B28
-        input_type: holding
-        unit_of_measurement: var
-        device_class: reactive_power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32
-    
-      - name: ABB Apparent Power Total
-        unique_id: abb_apparent_power_total
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B2A
-        input_type: holding
-        unit_of_measurement: VA
-        device_class: apparent_power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32
-
-      - name: ABB Apparent Power L1
-        unique_id: abb_apparent_power_l1
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B2C
-        input_type: holding
-        unit_of_measurement: VA
-        device_class: apparent_power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32
-
-      - name: ABB Apparent Power L2
-        unique_id: abb_apparent_power_l2
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B2E
-        input_type: holding
-        unit_of_measurement: VA
-        device_class: apparent_power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32
-
-      - name: ABB Apparent Power L3
-        unique_id: abb_apparent_power_l3
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B30
-        input_type: holding
-        unit_of_measurement: VA
-        device_class: apparent_power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32
-
-# Frequency value
-
-      - name: ABB Frequency
-        unique_id: abb_frequency
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B32
-        input_type: holding
-        unit_of_measurement: Hz
-        device_class: frequency
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: uint16
-
-# Power Factors Values
-
-      - name: ABB Angle Power Total
-        unique_id: abb_angle_power_total
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B33
-        input_type: holding
-        unit_of_measurement: °
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: int16
-      
-      - name: ABB Angle Power L1
-        unique_id: abb_angle_power_l1
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B34
-        input_type: holding
-        unit_of_measurement: °
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: int16
-        
-      - name: ABB Angle Power L2
-        unique_id: abb_angle_power_l2
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B35
-        input_type: holding
-        unit_of_measurement: °
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: int16 
-        
-      - name: ABB Angle Power L3
-        unique_id: abb_angle_power_l3
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B36
-        input_type: holding
-        unit_of_measurement: °
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: int16
-        
-      - name: ABB Angle Voltage L1
-        unique_id: abb_angle_voltage_l1
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B37
-        input_type: holding
-        unit_of_measurement: °
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: int16
-        
-      - name: ABB Angle Voltage L2
-        unique_id: abb_angle_voltage_l2
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B38
-        input_type: holding
-        unit_of_measurement: °
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: int16 
-        
-      - name: ABB Angle Voltage L3
-        unique_id: abb_angle_voltage_l3
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B39
-        input_type: holding
-        unit_of_measurement: °
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: int16
-        
-      - name: ABB Angle Current L1
-        unique_id: abb_angle_current_l1
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B3D
-        input_type: holding
-        unit_of_measurement: °
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: int16
-        
-      - name: ABB Angle Current L2
-        unique_id: abb_angle_current_l2
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B3E
-        input_type: holding
-        unit_of_measurement: °
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: int16
-        
-      - name: ABB Angle Current L3
-        unique_id: abb_angle_current_l3
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B3F
-        input_type: holding
-        unit_of_measurement: °
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: int16
-        
-      - name: ABB Power Factor Total
-        unique_id: abb_power_factor_total
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B40
-        input_type: holding
-        device_class: power_factor
-        state_class: measurement
-        scale: 0.001
-        offset: 0
-        precision: 3
-        data_type: int16
-        
-      - name: ABB Power Factor L1
-        unique_id: abb_power_factor_l1
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B41
-        input_type: holding
-        device_class: power_factor
-        state_class: measurement
-        scale: 0.001
-        offset: 0
-        precision: 3
-        data_type: int16
-        
-      - name: ABB Power Factor L2
-        unique_id: abb_power_factor_l2
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B42
-        input_type: holding
-        device_class: power_factor
-        state_class: measurement
-        scale: 0.001
-        offset: 0
-        precision: 3
-        data_type: int16
-        
-      - name: ABB Power Factor L3
-        unique_id: abb_power_factor_l3
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B43
-        input_type: holding
-        device_class: power_factor
-        state_class: measurement
-        scale: 0.001
-        offset: 0
-        precision: 3
-        data_type: int16
-        
-      - name: ABB Current Quadrant Total
-        unique_id: abb_current_quadrant_total
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B44
-        input_type: holding
-        state_class: measurement
-        scale: 1
-        offset: 0
-        precision: 0
-        data_type: uint16
-        
-      - name: ABB Current Quadrant L1
-        unique_id: abb_current_quadrant_l1
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B45
-        input_type: holding
-        state_class: measurement
-        scale: 1
-        offset: 0
-        precision: 0
-        data_type: uint16
-        
-      - name: ABB Current Quadrant L2
-        unique_id: abb_current_quadrant_l2
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B46
-        input_type: holding
-        state_class: measurement
-        scale: 1
-        offset: 0
-        precision: 0
-        data_type: uint16
-        
-      - name: ABB Current Quadrant L3
-        unique_id: abb_current_quadrant_l3
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B47
-        input_type: holding
-        state_class: measurement
-        scale: 1
-        offset: 0
-        precision: 0
-        data_type: uint16
-        
-      - name: ABB Cosphi Total
-        unique_id: abb_cosphi_total
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B48
-        input_type: holding
-        unit_of_measurement: °
-        state_class: measurement
-        scale: 0.001
-        offset: 0
-        precision: 3
-        data_type: int16
-        
-      - name: ABB Cosphi L1
-        unique_id: abb_cosphi_l1
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B49
-        input_type: holding
-        unit_of_measurement: °
-        state_class: measurement
-        scale: 0.001
-        offset: 0
-        precision: 3
-        data_type: int16
-        
-      - name: ABB Cosphi L2
-        unique_id: abb_cosphi_l2
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B4A
-        input_type: holding
-        unit_of_measurement: °
-        state_class: measurement
-        scale: 0.001
-        offset: 0
-        precision: 3
-        data_type: int16
-       
-      - name: ABB Cosphi L3
-        unique_id: abb_cosphi_l3
-        slave: 1
-        #scan_interval: 5
-        address: 0x5B4B
-        input_type: holding
-        unit_of_measurement: °
-        state_class: measurement
-        scale: 0.001
-        offset: 0
-        precision: 3
-        data_type: int16
-
-# Armonics and THD Values     
-        
-      - name: ABB Voltage L1 THD
-        unique_id: abb_voltage_l1_thd
-        slave: 1
-        #scan_interval: 5
-        address: 0x5D00
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16       
-        
-      - name: ABB Armonic Voltage L1 2nd
-        unique_id: abb_armonic_voltage_l1_2nd
-        slave: 1
-        #scan_interval: 5
-        address: 0x5D01
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16              
-        
-      - name: ABB Armonic Voltage L1 3rd
-        unique_id: abb_armonic_voltage_l1_3rd
-        slave: 1
-        #scan_interval: 5
-        address: 0x5D02
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16               
-        
-      - name: ABB Armonic Voltage L1 4th
-        unique_id: abb_armonic_voltage_l1_4th
-        slave: 1
-        #scan_interval: 5
-        address: 0x5D03
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16               
-        
-      - name: ABB Armonic Voltage L1 5th
-        unique_id: abb_armonic_voltage_l1_5th
-        slave: 1
-        #scan_interval: 5
-        address: 0x5D04
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16               
-        
-      - name: ABB Armonic Voltage L1 6th
-        unique_id: abb_armonic_voltage_l1_6th
-        slave: 1
-        #scan_interval: 5
-        address: 0x5D05
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16            
-        
-      - name: ABB Armonic Voltage L1 7th
-        unique_id: abb_armonic_voltage_l1_7th
-        slave: 1
-        #scan_interval: 5
-        address: 0x5D06
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16            
-        
-      - name: ABB Voltage L2 THD
-        unique_id: abb_voltage_l2_thd
-        slave: 1
-        #scan_interval: 5
-        address: 0x5D80
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16       
-        
-      - name: ABB Armonic Voltage L2 2nd
-        unique_id: abb_armonic_voltage_l2_2nd
-        slave: 1
-        #scan_interval: 5
-        address: 0x5D81
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16              
-        
-      - name: ABB Armonic Voltage L2 3rd
-        unique_id: abb_armonic_voltage_l2_3rd
-        slave: 1
-        #scan_interval: 5
-        address: 0x5D82
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16               
-        
-      - name: ABB Armonic Voltage L2 4th
-        unique_id: abb_armonic_voltage_l2_4th
-        slave: 1
-        #scan_interval: 5
-        address: 0x5D83
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16               
-        
-      - name: ABB Armonic Voltage L2 5th
-        unique_id: abb_armonic_voltage_l2_5th
-        slave: 1
-        #scan_interval: 5
-        address: 0x5D84
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16               
-        
-      - name: ABB Armonic Voltage L2 6th
-        unique_id: abb_armonic_voltage_l2_6th
-        slave: 1
-        #scan_interval: 5
-        address: 0x5D85
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16            
-        
-      - name: ABB Armonic Voltage L2 7th
-        unique_id: abb_voltage_l2_thd_7
-        slave: 1
-        #scan_interval: 5
-        address: 0x5D86
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16             
-        
-      - name: ABB Voltage L3 THD
-        unique_id: abb_voltage_l3_thd
-        slave: 1
-        #scan_interval: 5
-        address: 0x5E00
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16       
-        
-      - name: ABB Armonic Voltage L3 2nd
-        unique_id: abb_armonic_voltage_l3_2nd
-        slave: 1
-        #scan_interval: 5
-        address: 0x5E01
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16              
-        
-      - name: ABB Armonic Voltage L3 3rd
-        unique_id: abb_armonic_voltage_l3_3rd
-        slave: 1
-        #scan_interval: 5
-        address: 0x5E02
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16               
-        
-      - name: ABB Armonic Voltage L3 4th
-        unique_id: abb_armonic_voltage_l3_4th
-        slave: 1
-        #scan_interval: 5
-        address: 0x5E03
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16               
-        
-      - name: ABB Armonic Voltage L3 5th
-        unique_id: abb_armonic_voltage_l3_5th
-        slave: 1
-        #scan_interval: 5
-        address: 0x5E04
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16               
-        
-      - name: ABB Armonic Voltage L3 6th
-        unique_id: abb_armonic_voltage_l3_6th
-        slave: 1
-        #scan_interval: 5
-        address: 0x5E05
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16            
-        
-      - name: ABB Armonic Voltage L3 7th
-        unique_id: abb_armonic_voltage_l3_7th
-        slave: 1
-        #scan_interval: 5
-        address: 0x5E06
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16          
-        
-      - name: ABB Voltage L1-L2 THD
-        unique_id: abb_voltage_l1_l2_thd
-        slave: 1
-        #scan_interval: 5
-        address: 0x5E80
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16        
-        
-      - name: ABB Armonic Voltage L1-L2 2nd
-        unique_id: abb_armonic_voltage_l1_l2_2nd
-        slave: 1
-        #scan_interval: 5
-        address: 0x5E81
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16        
-        
-      - name: ABB Armonic Voltage L1-L2 3rd
-        unique_id: abb_armonic_voltage_l1_l2_3rd
-        slave: 1
-        #scan_interval: 5
-        address: 0x5E82
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16    
-        
-      - name: ABB Armonic Voltage L1-L2 4th
-        unique_id: abb_armonic_voltage_l1_l2_4th
-        slave: 1
-        #scan_interval: 5
-        address: 0x5E83
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16  
-        
-      - name: ABB Armonic Voltage L1-L2 5th
-        unique_id: abb_armonic_voltage_l1_l2_5th
-        slave: 1
-        #scan_interval: 5
-        address: 0x5E84
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16        
-        
-      - name: ABB Armonic Voltage L1-L2 6th
-        unique_id: abb_armonic_voltage_l1_l2_6th
-        slave: 1
-        #scan_interval: 5
-        address: 0x5E85
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16     
-        
-      - name: ABB Armonic Voltage L1-L2 7th
-        unique_id: abb_armonic_voltage_l1_l2_7th
-        slave: 1
-        #scan_interval: 5
-        address: 0x5E86
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16        
-        
-      - name: ABB Voltage L3-L2 THD
-        unique_id: abb_voltage_l3_l2_thd
-        slave: 1
-        #scan_interval: 5
-        address: 0x5F00
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16        
-        
-      - name: ABB Armonic Voltage L3-L2 2nd
-        unique_id: abb_armonic_voltage_l3_l2_2nd
-        slave: 1
-        #scan_interval: 5
-        address: 0x5F01
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16        
-        
-      - name: ABB Armonic Voltage L3-L2 3rd
-        unique_id: abb_armonic_voltage_l3_l2_3rd
-        slave: 1
-        #scan_interval: 5
-        address: 0x5F02
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16    
-        
-      - name: ABB Armonic Voltage L3-L2 4th
-        unique_id: abb_armonic_voltage_l3_l2_4th
-        slave: 1
-        #scan_interval: 5
-        address: 0x5F03
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16  
-        
-      - name: ABB Armonic Voltage L3-L2 5th
-        unique_id: abb_armonic_voltage_l3_l2_5th
-        slave: 1
-        #scan_interval: 5
-        address: 0x5F04
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16        
-        
-      - name: ABB Armonic Voltage L3-L2 6th
-        unique_id: abb_armonic_voltage_l3_l2_6th
-        slave: 1
-        #scan_interval: 5
-        address: 0x5F05
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16     
-        
-      - name: ABB Armonic Voltage L3-L2 7th
-        unique_id: abb_armonic_voltage_l3_l2_7th
-        slave: 1
-        #scan_interval: 5
-        address: 0x5F06
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16  
-        
-      - name: ABB Voltage L1-L3 THD
-        unique_id: abb_voltage_l1_l3_thd
-        slave: 1
-        #scan_interval: 5
-        address: 0x5F80
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16        
-        
-      - name: ABB Armonic Voltage L1-L3 2nd
-        unique_id: abb_armonic_voltage_l1_l3_2nd
-        slave: 1
-        #scan_interval: 5
-        address: 0x5F81
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16        
-        
-      - name: ABB Armonic Voltage L1-L3 3rd
-        unique_id: abb_armonic_voltage_l1_l3_3rd
-        slave: 1
-        #scan_interval: 5
-        address: 0x5F82
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16    
-        
-      - name: ABB Armonic Voltage L1-L3 4th
-        unique_id: abb_armonic_voltage_l1_l3_4th
-        slave: 1
-        #scan_interval: 5
-        address: 0x5F83
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16  
-        
-      - name: ABB Armonic Voltage L1-L3 5th
-        unique_id: abb_armonic_voltage_l1_l3_5th
-        slave: 1
-        #scan_interval: 5
-        address: 0x5F84
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16        
-        
-      - name: ABB Armonic Voltage L1-L3 6th
-        unique_id: abb_armonic_voltage_l1_l3_6th
-        slave: 1
-        #scan_interval: 5
-        address: 0x5F85
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16     
-        
-      - name: ABB Armonic Voltage L1-L3 7th
-        unique_id: abb_armonic_voltage_l1_l3_7th
-        slave: 1
-        #scan_interval: 5
-        address: 0x5F86
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16          
-        
-      - name: ABB Current L1 THD
-        unique_id: abb_current_l1_thd
-        slave: 1
-        #scan_interval: 5
-        address: 0x6000
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16       
-        
-      - name: ABB Armonic Current L1 2nd
-        unique_id: abb_armonic_current_l1_2nd
-        slave: 1
-        #scan_interval: 5
-        address: 0x6001
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16              
-        
-      - name: ABB Armonic Current L1 3rd
-        unique_id: abb_armonic_current_l1_3rd
-        slave: 1
-        #scan_interval: 5
-        address: 0x6002
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16               
-        
-      - name: ABB Armonic Current L1 4th
-        unique_id: abb_armonic_current_l1_4th
-        slave: 1
-        #scan_interval: 5
-        address: 0x6003
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16               
-        
-      - name: ABB Armonic Current L1 5th
-        unique_id: abb_armonic_current_l1_5th
-        slave: 1
-        #scan_interval: 5
-        address: 0x6004
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16               
-        
-      - name: ABB Armonic Current L1 6th
-        unique_id: abb_armonic_current_l1_6th
-        slave: 1
-        #scan_interval: 5
-        address: 0x6005
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16            
-        
-      - name: ABB Armonic Current L1 7th
-        unique_id: abb_armonic_current_l1_7th
-        slave: 1
-        #scan_interval: 5
-        address: 0x6006
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16            
-        
-      - name: ABB Current L2 THD
-        unique_id: abb_current_L2_thd
-        slave: 1
-        #scan_interval: 5
-        address: 0x6080
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16       
-        
-      - name: ABB Armonic Current L2 2nd
-        unique_id: abb_armonic_current_l2_2nd
-        slave: 1
-        #scan_interval: 5
-        address: 0x6081
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16              
-        
-      - name: ABB Armonic Current L2 3rd
-        unique_id: abb_armonic_current_l2_3rd
-        slave: 1
-        #scan_interval: 5
-        address: 0x6082
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16               
-        
-      - name: ABB Armonic Current L2 4th
-        unique_id: abb_armonic_current_l2_4th
-        slave: 1
-        #scan_interval: 5
-        address: 0x6083
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16               
-        
-      - name: ABB Armonic Current L2 5th
-        unique_id: abb_armonic_current_l2_5th
-        slave: 1
-        #scan_interval: 5
-        address: 0x6084
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16               
-        
-      - name: ABB Armonic Current L2 6th
-        unique_id: abb_armonic_current_l2_6th
-        slave: 1
-        #scan_interval: 5
-        address: 0x6085
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16            
-        
-      - name: ABB Armonic Current L2 7th
-        unique_id: abb_armonic_current_l2_7th
-        slave: 1
-        #scan_interval: 5
-        address: 0x6086
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16             
-        
-      - name: ABB Current L3 THD
-        unique_id: abb_current_l3_thd
-        slave: 1
-        #scan_interval: 5
-        address: 0x6100
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16       
-        
-      - name: ABB Armonic Current L3 2nd
-        unique_id: abb_armonic_current_l3_2nd
-        slave: 1
-        #scan_interval: 5
-        address: 0x6101
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16              
-        
-      - name: ABB Armonic Current L3 3rd
-        unique_id: abb_armonic_current_l2_3rd
-        slave: 1
-        #scan_interval: 5
-        address: 0x6102
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16               
-        
-      - name: ABB Armonic Current L3 4th
-        unique_id: abb_armonic_current_l2_4th
-        slave: 1
-        #scan_interval: 5
-        address: 0x6103
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16               
-        
-      - name: ABB Armonic Current L3 5th
-        unique_id: abb_armonic_current_l2_5th
-        slave: 1
-        #scan_interval: 5
-        address: 0x6104
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16               
-        
-      - name: ABB Armonc Current L3 6th
-        unique_id: abb_armonic_current_l2_6th
-        slave: 1
-        #scan_interval: 5
-        address: 0x6105
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16            
-        
-      - name: ABB Armonic Current L3 7th
-        unique_id: abb_armonic_current_l2_7th
-        slave: 1
-        #scan_interval: 5
-        address: 0x6106
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16     
-        
-      - name: ABB Current N THD
-        unique_id: abb_current_n_thd
-        slave: 1
-        #scan_interval: 5
-        address: 0x6180
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16       
-        
-      - name: ABB Armonic Current N 2nd
-        unique_id: abb_armonic_current_n_2nd
-        slave: 1
-        #scan_interval: 5
-        address: 0x6181
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16              
-        
-      - name: ABB Armonic Current N 3rd
-        unique_id: abb_armonic_current_n_3rd
-        slave: 1
-        #scan_interval: 5
-        address: 0x6182
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16               
-        
-      - name: ABB Armonic Current N 4th
-        unique_id: abb_armonic_current_n_4th
-        slave: 1
-        #scan_interval: 5
-        address: 0x6183
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16               
-        
-      - name: ABB Armonic Current N 5th
-        unique_id: abb_armonic_current_n_5th
-        slave: 1
-        #scan_interval: 5
-        address: 0x6184
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16               
-        
-      - name: ABB Armonic Current N 6th
-        unique_id: abb_armonic_current_n_6th
-        slave: 1
-        #scan_interval: 5
-        address: 0x6185
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16            
-        
-      - name: ABB Armonic Current N 7th
-        unique_id: abb_armonic_current_n_7th
-        slave: 1
-        #scan_interval: 5
-        address: 0x6186
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint16            
-        
-      - name: ABB Unbalance Line Voltage
-        unique_id: abb_unbalance_line_voltage
-        slave: 1
-        #scan_interval: 5
-        address: 0x6200
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint32  
-        
-      - name: ABB Unbalance Phase Voltage
-        unique_id: abb_unbalance_phase_voltage
-        slave: 1
-        #scan_interval: 5
-        address: 0x6202
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint32          
-
-      - name: ABB Unbalance Current
-        unique_id: abb_unbalance_current
-        slave: 1
-        #scan_interval: 5
-        address: 0x6204
-        input_type: holding
-        unit_of_measurement: "%"
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint32    
-        
-# Maximum Values
-
-      - name: ABB Maximum Current L1
-        unique_id: abb_maximum_current_l1
-        slave: 1
-        #scan_interval: 5
-        address: 0x5C10
-        input_type: holding
-        unit_of_measurement: A
-        device_class: current
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: uint32          
-        
-      - name: ABB Maximum Current L2
-        unique_id: abb_maximum_current_l2
-        slave: 1
-        #scan_interval: 5
-        address: 0x5C12
-        input_type: holding
-        unit_of_measurement: A
-        device_class: current
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: uint32    
-        
-      - name: ABB Maximum Current L3
-        unique_id: abb_maximum_current_l3
-        slave: 1
-        #scan_interval: 5
-        address: 0x5C14
-        input_type: holding
-        unit_of_measurement: A
-        device_class: current
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: uint32    
-        
-      - name: ABB Maximum Current N
-        unique_id: abb_maximum_current_n
-        slave: 1
-        #scan_interval: 5
-        address: 0x5C16
-        input_type: holding
-        unit_of_measurement: A
-        device_class: current
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: uint32   
-        
-      - name: ABB Maximum Voltage L1
-        unique_id: abb_maximum_voltage_l1
-        slave: 1
-        #scan_interval: 5
-        address: 0x5C18
-        input_type: holding
-        unit_of_measurement: V
-        device_class: voltage
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint32   
-        
-      - name: ABB Maximum Voltage L2
-        unique_id: abb_maximum_voltage_l2
-        slave: 1
-        #scan_interval: 5
-        address: 0x5C1A
-        input_type: holding
-        unit_of_measurement: V
-        device_class: voltage
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint32   
-        
-      - name: ABB Maximum Voltage L3
-        unique_id: abb_maximum_voltage_l3
-        slave: 1
-        #scan_interval: 5
-        address: 0x5C1C
-        input_type: holding
-        unit_of_measurement: V
-        device_class: voltage
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint32   
-        
-      - name: ABB Maximum Voltage L1-L2
-        unique_id: abb_maximum_voltage_l1-l2
-        slave: 1
-        #scan_interval: 5
-        address: 0x5C1E
-        input_type: holding
-        unit_of_measurement: V
-        device_class: voltage
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint32   
-        
-      - name: ABB Maximum Voltage L2-L3
-        unique_id: abb_maximum_voltage_l2-l3
-        slave: 1
-        #scan_interval: 5
-        address: 0x5C20
-        input_type: holding
-        unit_of_measurement: V
-        device_class: voltage
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint32   
-        
-      - name: ABB Maximum Voltage L1-L3
-        unique_id: abb_maximum_voltage_l1-l3
-        slave: 1
-        #scan_interval: 5
-        address: 0x5C22
-        input_type: holding
-        unit_of_measurement: V
-        device_class: voltage
-        state_class: measurement
-        scale: 0.1
-        offset: 0
-        precision: 1
-        data_type: uint32          
-        
-      - name: ABB Maximum Active Power total
-        unique_id: abb_maximum_active_power_total
-        slave: 1
-        #scan_interval: 5
-        address: 0x5C24
-        input_type: holding
-        unit_of_measurement: W
-        device_class: power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32   
-        
-      - name: ABB Maximum Active Power L1
-        unique_id: abb_maximum_active_power_l1
-        slave: 1
-        #scan_interval: 5
-        address: 0x5C26
-        input_type: holding
-        unit_of_measurement: W
-        device_class: power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32 
-        
-      - name: ABB Maximum Active Power L2
-        unique_id: abb_maximum_active_power_l2
-        slave: 1
-        #scan_interval: 5
-        address: 0x5C28
-        input_type: holding
-        unit_of_measurement: W
-        device_class: power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32
-        
-      - name: ABB Maximum Active Power L3
-        unique_id: abb_maximum_active_power_l3
-        slave: 1
-        #scan_interval: 5
-        address: 0x5C2A
-        input_type: holding
-        unit_of_measurement: W
-        device_class: power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32
-        
-      - name: ABB Maximum Reactive Power Total
-        unique_id: abb_maximum_reactive_power_total
-        slave: 1
-        #scan_interval: 5
-        address: 0x5C2C
-        input_type: holding
-        unit_of_measurement: var
-        device_class: reactive_power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32
-        
-      - name: ABB Maximum Reactive Power L1
-        unique_id: abb_maximum_reactive_power_l1
-        slave: 1
-        #scan_interval: 5
-        address: 0x5C2E
-        input_type: holding
-        unit_of_measurement: var
-        device_class: reactive_power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32  
-        
-      - name: ABB Maximum Reactive Power L2
-        unique_id: abb_maximum_reactive_power_l2
-        slave: 1
-        #scan_interval: 5
-        address: 0x5C30
-        input_type: holding
-        unit_of_measurement: var
-        device_class: reactive_power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32
-        
-      - name: ABB Maximum Reactive Power L3
-        unique_id: abb_maximum_reactive_power_l3
-        slave: 1
-        #scan_interval: 5
-        address: 0x5C32
-        input_type: holding
-        unit_of_measurement: var
-        device_class: reactive_power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32       
-        
-      - name: ABB Maximum Apparent Power Total
-        unique_id: abb_maximum_apparent_power_total
-        slave: 1
-        #scan_interval: 5
-        address: 0x5C34
-        input_type: holding
-        unit_of_measurement: VA
-        device_class: apparent_power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32
-        
-      - name: ABB Maximum Apparent Power L1
-        unique_id: abb_maximum_apparent_power_l1
-        slave: 1
-        #scan_interval: 5
-        address: 0x5C36
-        input_type: holding
-        unit_of_measurement: VA
-        device_class: apparent_power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32     
-        
-      - name: ABB Maximum Apparent Power L2
-        unique_id: abb_maximum_apparent_power_l2
-        slave: 1
-        #scan_interval: 5
-        address: 0x5C38
-        input_type: holding
-        unit_of_measurement: VA
-        device_class: apparent_power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32    
-        
-      - name: ABB Maximum Apparent Power L3
-        unique_id: abb_maximum_apparent_power_l3
-        slave: 1
-        #scan_interval: 5
-        address: 0x5C3A
-        input_type: holding
-        unit_of_measurement: VA
-        device_class: apparent_power
-        state_class: measurement
-        scale: 0.01
-        offset: 0
-        precision: 2
-        data_type: int32    
-        
+# Customizzazione delle icone sensori ABB-Modbus
+homeassistant:
+  customize:
+    sensor.abb_angle_power_total:
+      icon: mdi:angle-acute
+    sensor.abb_angle_power_l1:
+      icon: mdi:angle-acute
+    sensor.abb_angle_power_l2:
+      icon: mdi:angle-acute
+    sensor.abb_angle_power_l3:
+      icon: mdi:angle-acute
+    sensor.abb_angle_voltage_l1:
+      icon: mdi:angle-acute
+    sensor.abb_angle_voltage_l2:
+      icon: mdi:angle-acute
+    sensor.abb_angle_voltage_l3:
+      icon: mdi:angle-acute
+    sensor.abb_angle_current_l1:
+      icon: mdi:angle-acute
+    sensor.abb_angle_current_l2:
+      icon: mdi:angle-acute
+    sensor.abb_angle_current_l3:
+      icon: mdi:angle-acute
+    sensor.abb_cosphi_total:
+      icon: mdi:angle-acute
+    sensor.abb_cosphi_l1:
+      icon: mdi:angle-acute
+    sensor.abb_cosphi_l2:
+      icon: mdi:angle-acute
+    sensor.abb_cosphi_l3:
+      icon: mdi:angle-acute
+    sensor.abb_voltage_l1_thd:
+      icon: mdi:alpha-t-box-outline
+    sensor.abb_voltage_l2_thd:
+      icon: mdi:alpha-t-box-outline
+    sensor.abb_voltage_l3_thd:
+      icon: mdi:alpha-t-box-outline
+    sensor.abb_voltage_l1_l2_thd:
+      icon: mdi:alpha-t-box-outline
+    sensor.abb_voltage_l1_l3_thd:
+      icon: mdi:alpha-t-box-outline
+    sensor.abb_voltage_l3_l2_thd:
+      icon: mdi:alpha-t-box-outline
+    sensor.abb_current_l1_thd:
+      icon: mdi:alpha-t-box-outline
+    sensor.abb_current_l2_thd:
+      icon: mdi:alpha-t-box-outline
+    sensor.abb_current_l3_thd:
+      icon: mdi:alpha-t-box-outline
+    sensor.abb_current_n_thd:
+      icon: mdi:alpha-t-box-outline
+    sensor.abb_armonic_voltage_l1_2nd:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_3rd:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_4th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_5th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_6th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_7th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l2_2nd:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l2_3rd:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l2_4th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l2_5th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l2_6th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l2_7th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_2nd:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_3rd:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_4th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_5th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_6th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_7th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l2_2nd:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l2_3rd:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l2_4th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l2_5th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l2_6th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l2_7th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l3_2nd:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l3_3rd:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l3_4th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l3_5th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l3_6th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l3_7th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_l2_2nd:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_l2_3rd:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_l2_4th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_l2_5th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_l2_6th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_l2_7th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l1_2nd:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l1_3rd:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l1_4th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l1_5th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l1_6th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l1_7th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l2_2nd:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l2_3rd:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l2_4th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l2_5th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l2_6th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l2_7th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l3_2nd:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l3_3rd:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l3_4th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l3_5th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l3_6th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l3_7th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_n_2nd:
+      icon: mdi:poll
+    sensor.abb_armonic_current_n_3rd:
+      icon: mdi:poll
+    sensor.abb_armonic_current_n_4th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_n_5th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_n_6th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_n_7th:
+      icon: mdi:poll
