@@ -17,6 +17,14 @@
 #define SAMPLES ...
 long timing[] = ...
 
+// Assembly compiler instruction clock delay
+void __attribute__((noinline)) delay_us(unsigned long value) {
+  unsigned long count = value * 1.44345;   //2.64637 clean 500ms
+  for (long i = 0; i < count; i++) {
+    asm("");
+  }
+}
+
 int main() {
   // Initialize digital pin  13, PB5 as output
   DDRB = (1 << PB5);
@@ -29,17 +37,10 @@ int main() {
     for (int i=0; i<SAMPLES; i++) {
       PINB = (1 << PB5);
       delay_us(timing[i]);
-   }
+    }
   }
 }
 
-// Assembly compiler instruction clock delay
-void delay_us(long value) {
-  long count = value * 1.323;   //2.64637 clean 500ms
-  for (long i = 0; i < count; i++) {
-    asm("");
-  }
-}
 """
 
 import struct
@@ -140,13 +141,13 @@ def print_digital_data(data: DigitalData):
         print(f"#define SAMPLES {chunk.num_transitions}")
         # Show state changes
         first_diff = chunk.transition_times[0] *1000000
-        print("long timing[] = {", end="")
+        print("unsigned long timing[] = {", end="")
         print(f"{first_diff:>.0f}", end="")
         for current, next_t in zip(chunk.transition_times, chunk.transition_times[1:]):
             diff = next_t - current
             diff = diff*1000000;
             print(f", {diff:>.0f}", end="")
-        print(" };", end="")
+        print("};", end="")
 
 # Usage example
 if __name__ == '__main__':
