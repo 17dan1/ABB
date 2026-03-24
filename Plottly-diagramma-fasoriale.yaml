@@ -68,6 +68,7 @@ entities:
     name: V1
     r: $fn ({ vars }) => [0, vars.v1]
     theta: $fn ({ vars }) => [0, vars.ph_v1]
+    hovertemplate: "V1: %{r:.1f} <br>θ: %{theta:.1f} °"
     line:
       color: blue
       width: 4
@@ -77,6 +78,7 @@ entities:
     name: V2
     r: $fn ({ vars }) => [0, vars.v2]
     theta: $fn ({ vars }) => [0, vars.ph_v2]
+    hovertemplate: "V2: %{r:.1f} <br>θ: %{theta:.1f} °"
     line:
       color: lawngreen
       width: 4
@@ -86,6 +88,7 @@ entities:
     name: V3
     r: $fn ({ vars }) => [0, vars.v3]
     theta: $fn ({ vars }) => [0, vars.ph_v3]
+    hovertemplate: "V3: %{r:.1f} <br>θ: %{theta:.1f} °"
     line:
       color: red
       width: 4
@@ -95,6 +98,8 @@ entities:
     name: I1
     r: $fn ({ vars }) => [0, vars.i1]
     theta: $fn ({ vars }) => [0, vars.ph_i1]
+    hovertemplate: "I1: %{customdata:.2f} <br>θ: %{theta:.1f} °"
+    customdata: $fn ({ vars }) => [0, vars.i1 / 10]
     line:
       color: blue
       dash: dot
@@ -105,6 +110,8 @@ entities:
     name: I2
     r: $fn ({ vars }) => [0, vars.i2]
     theta: $fn ({ vars }) => [0, vars.ph_i2]
+    hovertemplate: "I2: %{customdata:.2f} <br>θ: %{theta:.1f} °"
+    customdata: $fn ({ vars }) => [0, vars.i2 / 10]
     line:
       color: lawngreen
       dash: dot
@@ -115,6 +122,8 @@ entities:
     name: I3
     r: $fn ({ vars }) => [0, vars.i3]
     theta: $fn ({ vars }) => [0, vars.ph_i3]
+    hovertemplate: "I3: %{customdata:.2f} <br>θ: %{theta:.1f} °"
+    customdata: $fn ({ vars }) => [0, vars.i3 / 10]
     line:
       color: red
       dash: dot
