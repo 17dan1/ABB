@@ -4,14 +4,14 @@ refresh_interval: 2
 entities:
   - entity: sensor.abb_voltage_l1_n
     internal: true
-    fn: >-
+    fn: |-
       $fn ({ hass, vars }) => vars.v1 =
-      Number(hass.states['sensor.abb_voltage_l1_n'].state)
+        Number(hass.states['sensor.abb_voltage_l1_n'].state)
   - entity: sensor.abb_phase_voltage_l1
     internal: true
     fn: >-
       $fn ({ hass, vars }) => vars.ph_v1 =
-      Number(hass.states['sensor.abb_phase_voltage_l1'].state)
+      Number(hass.states['sensor.abb_angle_voltage_l1'].state)
   - entity: sensor.abb_voltage_l2_n
     internal: true
     fn: >-
@@ -21,7 +21,7 @@ entities:
     internal: true
     fn: >-
       $fn ({ hass, vars }) => vars.ph_v2 =
-      Number(hass.states['sensor.abb_phase_voltage_l2'].state)
+      Number(hass.states['sensor.abb_angle_voltage_l2'].state)
   - entity: sensor.abb_voltage_l3_n
     internal: true
     fn: >-
@@ -31,37 +31,37 @@ entities:
     internal: true
     fn: >-
       $fn ({ hass, vars }) => vars.ph_v3 =
-      Number(hass.states['sensor.abb_phase_voltage_l3'].state)
+      Number(hass.states['sensor.abb_angle_voltage_l3'].state)
   - entity: sensor.abb_current_l1
     internal: true
     fn: >-
       $fn ({ hass, vars }) => vars.i1 =
-      Number(hass.states['sensor.abb_current_l1'].state)
+      Number(hass.states['sensor.abb_current_l1'].state)*10
   - entity: sensor.abb_phase_current_l1
     internal: true
     fn: >-
       $fn ({ hass, vars }) => vars.ph_i1 =
-      Number(hass.states['sensor.abb_phase_current_l1'].state)
+      Number(hass.states['sensor.abb_angle_current_l1'].state)
   - entity: sensor.abb_current_l2
     internal: true
     fn: >-
       $fn ({ hass, vars }) => vars.i2 =
-      Number(hass.states['sensor.abb_current_l2'].state)
+      Number(hass.states['sensor.abb_current_l2'].state)*10
   - entity: sensor.abb_phase_current_l2
     internal: true
     fn: >-
       $fn ({ hass, vars }) => vars.ph_i2 =
-      Number(hass.states['sensor.abb_phase_current_l2'].state)
+      Number(hass.states['sensor.abb_angle_current_l2'].state)
   - entity: sensor.abb_current_l3
     internal: true
     fn: >-
       $fn ({ hass, vars }) => vars.i3 =
-      Number(hass.states['sensor.abb_current_l3'].state)
+      Number(hass.states['sensor.abb_current_l3'].state)*10
   - entity: sensor.abb_phase_current_l3
     internal: true
     fn: >-
       $fn ({ hass, vars }) => vars.ph_i3 =
-      Number(hass.states['sensor.abb_phase_current_l3'].state)
+      Number(hass.states['sensor.abb_angle_current_l3'].state)
   - entity: sensor.abb_voltage_l1_n
     type: scatterpolar
     mode: lines
@@ -126,3 +126,6 @@ layout:
       range:
         - 0
         - 260
+grid_options:
+  columns: 18
+  rows: 8
