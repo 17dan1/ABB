@@ -26,6 +26,12 @@ entities:
       - >-
         $fn ({hass}) =>
         Number(hass.states['sensor.abb_armonic_voltage_l1_7th'].state)
+      - >-
+        $fn ({hass}) =>
+        Number(hass.states['sensor.abb_armonic_voltage_l1_8th'].state)
+      - >-
+        $fn ({hass}) =>
+        Number(hass.states['sensor.abb_armonic_voltage_l1_9th'].state)
   - entity: null
     type: bar
     name: L2
@@ -50,6 +56,12 @@ entities:
       - >-
         $fn ({hass}) =>
         Number(hass.states['sensor.abb_armonic_voltage_l2_7th'].state)
+      - >-
+        $fn ({hass}) =>
+        Number(hass.states['sensor.abb_armonic_voltage_l2_8th'].state)
+      - >-
+        $fn ({hass}) =>
+        Number(hass.states['sensor.abb_armonic_voltage_l2_9th'].state)
   - entity: null
     type: bar
     name: L3
@@ -74,8 +86,14 @@ entities:
       - >-
         $fn ({hass}) =>
         Number(hass.states['sensor.abb_armonic_voltage_l3_7th'].state)
+      - >-
+        $fn ({hass}) =>
+        Number(hass.states['sensor.abb_armonic_voltage_l3_8th'].state)
+      - >-
+        $fn ({hass}) =>
+        Number(hass.states['sensor.abb_armonic_voltage_l3_9th'].state)
 layout:
-  title: Spettro armoniche L1
+  title: Spettro inquinamento armonico Tensioni
   xaxis:
     title: Armoniche
     tickvals:
@@ -86,6 +104,8 @@ layout:
       - 4
       - 5
       - 6
+      - 7
+      - 8
     ticktext:
       - 2°
       - 3°
@@ -93,6 +113,8 @@ layout:
       - 5°
       - 6°
       - 7°
+      - 8°
+      - 9°
   yaxis:
     title: THD %
     rangemode: tozero
