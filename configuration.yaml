@@ -13,7 +13,6 @@ scene: !include scenes.yaml
 # Includo in file di configurazione della comuncazione ModBus
 modbus: !include modbus.yaml
 
-
 # Utility meter energia
 utility_meter:
   # Active energy
@@ -44,7 +43,7 @@ utility_meter:
     
  # Reactive energy
   abb_l1_reactive_energy_meter:
-    name: ABB L1 Rective Energy Meter
+    name: ABB L1 Reactive Energy Meter
     source: sensor.abb_reactive_energy_l1
     unique_id: abb_l1_reactive_energy_meter
     cycle: daily
@@ -52,15 +51,15 @@ utility_meter:
     net_consumption: false
     delta_values: false
   abb_l2_reactive_energy_meter:
-    name: ABB L2 Rective Energy Meter
+    name: ABB L2 Reactive Energy Meter
     source: sensor.abb_reactive_energy_l2
-    unique_id: abb_l3_reactive_energy_meter
+    unique_id: abb_l2_reactive_energy_meter
     cycle: daily
     periodically_resetting: true
     net_consumption: false
     delta_values: false
   abb_l3_reactive_energy_meter:
-    name: ABB L3 Rective Energy Meter
+    name: ABB L3 Reactive Energy Meter
     source: sensor.abb_reactive_energy_l3
     unique_id: abb_l3_reactive_energy_meter
     cycle: daily
@@ -131,6 +130,10 @@ homeassistant:
       icon: mdi:poll
     sensor.abb_armonic_voltage_l1_7th:
       icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_8th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_9th:
+      icon: mdi:poll
     sensor.abb_armonic_voltage_l2_2nd:
       icon: mdi:poll
     sensor.abb_armonic_voltage_l2_3rd:
@@ -142,6 +145,10 @@ homeassistant:
     sensor.abb_armonic_voltage_l2_6th:
       icon: mdi:poll
     sensor.abb_armonic_voltage_l2_7th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l2_8th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l2_9th:
       icon: mdi:poll
     sensor.abb_armonic_voltage_l3_2nd:
       icon: mdi:poll
@@ -155,6 +162,10 @@ homeassistant:
       icon: mdi:poll
     sensor.abb_armonic_voltage_l3_7th:
       icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_8th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_9th:
+      icon: mdi:poll
     sensor.abb_armonic_voltage_l1_l2_2nd:
       icon: mdi:poll
     sensor.abb_armonic_voltage_l1_l2_3rd:
@@ -166,6 +177,10 @@ homeassistant:
     sensor.abb_armonic_voltage_l1_l2_6th:
       icon: mdi:poll
     sensor.abb_armonic_voltage_l1_l2_7th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l2_8th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l2_9th:
       icon: mdi:poll
     sensor.abb_armonic_voltage_l1_l3_2nd:
       icon: mdi:poll
@@ -179,6 +194,10 @@ homeassistant:
       icon: mdi:poll
     sensor.abb_armonic_voltage_l1_l3_7th:
       icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l3_8th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l1_l3_9th:
+      icon: mdi:poll
     sensor.abb_armonic_voltage_l3_l2_2nd:
       icon: mdi:poll
     sensor.abb_armonic_voltage_l3_l2_3rd:
@@ -190,6 +209,10 @@ homeassistant:
     sensor.abb_armonic_voltage_l3_l2_6th:
       icon: mdi:poll
     sensor.abb_armonic_voltage_l3_l2_7th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_l2_8th:
+      icon: mdi:poll
+    sensor.abb_armonic_voltage_l3_l2_9th:
       icon: mdi:poll
     sensor.abb_armonic_current_l1_2nd:
       icon: mdi:poll
@@ -203,6 +226,10 @@ homeassistant:
       icon: mdi:poll
     sensor.abb_armonic_current_l1_7th:
       icon: mdi:poll
+    sensor.abb_armonic_current_l1_8th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l1_9th:
+      icon: mdi:poll
     sensor.abb_armonic_current_l2_2nd:
       icon: mdi:poll
     sensor.abb_armonic_current_l2_3rd:
@@ -214,6 +241,10 @@ homeassistant:
     sensor.abb_armonic_current_l2_6th:
       icon: mdi:poll
     sensor.abb_armonic_current_l2_7th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l2_8th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l2_9th:
       icon: mdi:poll
     sensor.abb_armonic_current_l3_2nd:
       icon: mdi:poll
@@ -227,6 +258,10 @@ homeassistant:
       icon: mdi:poll
     sensor.abb_armonic_current_l3_7th:
       icon: mdi:poll
+    sensor.abb_armonic_current_l3_8th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_l3_9th:
+      icon: mdi:poll
     sensor.abb_armonic_current_n_2nd:
       icon: mdi:poll
     sensor.abb_armonic_current_n_3rd:
@@ -238,4 +273,8 @@ homeassistant:
     sensor.abb_armonic_current_n_6th:
       icon: mdi:poll
     sensor.abb_armonic_current_n_7th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_n_8th:
+      icon: mdi:poll
+    sensor.abb_armonic_current_n_9th:
       icon: mdi:poll
