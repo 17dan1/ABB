@@ -256,16 +256,22 @@ views:
               - entity: sensor.abb_l1_active_energy_meter
                 unit_of_measurement: kWh
                 type: bar
+                marker:
+                  color: blue
                 statistic: sum
                 period: hour
               - entity: sensor.abb_l2_active_energy_meter
                 unit_of_measurement: kWh
                 type: bar
+                marker:
+                  color: lawngreen
                 statistic: sum
                 period: hour
               - entity: sensor.abb_l3_active_energy_meter
                 unit_of_measurement: kWh
                 type: bar
+                marker:
+                  color: red
                 statistic: sum
                 period: hour
               - entity: ''
@@ -290,7 +296,8 @@ views:
             hours_to_show: 24h
             time_offset: 2h
             fn: |
-              $fn({getFromConfig, vars})=> {
+              $fn({ getFromConfig, vars, data }) => {
+
                 vars.zoom = (label, h) => ({
                   args: [
                     {
@@ -301,12 +308,18 @@ views:
                   ],
                   label,
                   method: "animate",
-                })
+                });
               }
+            config:
+              scrollZoom: false
             layout:
+              dragmode: false
+              yaxis:
+                autorange: true
+              barmode: stack
               updatemenus:
                 - buttons:
-                    - $fn({vars}) => vars.zoom( '8h', 8)
+                    - $fn(({vars}) => vars.zoom('8h', 8))
                     - $fn({vars}) => vars.zoom( '1d', 24)
                     - $fn({vars}) => vars.zoom( '2d', 24*2)
                     - $fn({vars}) => vars.zoom( '7d', 24*7)
@@ -1545,3 +1558,10 @@ views:
         content: |-
           # ABB M4M X2
           Tutti i valori letti
+  - type: sections
+    max_columns: 4
+    title: prova
+    path: prova
+    sections:
+      - type: grid
+        cards: []
