@@ -1107,6 +1107,239 @@
         precision: 1
         data_type: uint16
 
+- name: ABB Armonic Voltage L1 23th
+        unique_id: abb_armonic_voltage_l1_23th
+        slave: 1
+        #scan_interval: 5
+        address: 0x5D16
+        input_type: holding
+        unit_of_measurement: "%"
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: uint16               
+        
+      - name: ABB Armonic Voltage L1 24th
+        unique_id: abb_armonic_voltage_l1_24th
+        slave: 1
+        #scan_interval: 5
+        address: 0x5D17
+        input_type: holding
+        unit_of_measurement: "%"
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: uint16               
+        
+      - name: ABB Armonic Voltage L1 25th
+        unique_id: abb_armonic_voltage_l1_25th
+        slave: 1
+        #scan_interval: 5
+        address: 0x5D18
+        input_type: holding
+        unit_of_measurement: "%"
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: uint16            
+        
+      - name: ABB Armonic Voltage L1 26th
+        unique_id: abb_armonic_voltage_l1_26th
+        slave: 1
+        #scan_interval: 5
+        address: 0x5D19
+        input_type: holding
+        unit_of_measurement: "%"
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: uint16  
+        
+      - name: ABB Armonic Voltage L1 27th
+        unique_id: abb_armonic_voltage_l1_27th
+        slave: 1
+        #scan_interval: 5
+        address: 0x5D1A
+        input_type: holding
+        unit_of_measurement: "%"
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: uint16            
+        
+      - name: ABB Armonic Voltage L1 28th
+        unique_id: abb_armonic_voltage_l1_28th
+        slave: 1
+        #scan_interval: 5
+        address: 0x5D1B
+        input_type: holding
+        unit_of_measurement: "%"
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: uint16
+
+      - name: ABB Armonic Voltage L1 29th
+        unique_id: abb_armonic_voltage_l1_29th
+        slave: 1
+        #scan_interval: 5
+        address: 0x5D1C
+        input_type: holding
+        unit_of_measurement: "%"
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: uint16
+
+      - name: ABB Armonic Voltage L1 30th
+        unique_id: abb_armonic_voltage_l1_30th
+        slave: 1
+        #scan_interval: 5
+        address: 0x5D1D
+        input_type: holding
+        unit_of_measurement: "%"
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: uint16
+
+      - name: ABB Armonic Voltage L1 31th
+        unique_id: abb_armonic_voltage_l1_31th
+        slave: 1
+        #scan_interval: 5
+        address: 0x5D1E
+        input_type: holding
+        unit_of_measurement: "%"
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: uint16
+
+      - name: ABB Armonic Voltage L1 32th
+        unique_id: abb_armonic_voltage_l1_32th
+        slave: 1
+        #scan_interval: 5
+        address: 0x5D1F
+        input_type: holding
+        unit_of_measurement: "%"
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: uint16
+
+      - name: ABB Armonic Voltage L1 33th
+        unique_id: abb_armonic_voltage_l1_33th
+        slave: 1
+        #scan_interval: 5
+        address: 0x5D20
+        input_type: holding
+        unit_of_measurement: "%"
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: uint16
+
+      - name: ABB Armonic Voltage L1 34th
+        unique_id: abb_armonic_voltage_l1_34th
+        slave: 1
+        #scan_interval: 5
+        address: 0x5D21
+        input_type: holding
+        unit_of_measurement: "%"
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: uint16
+
+      - name: ABB Armonic Voltage L1 35th
+        unique_id: abb_armonic_voltage_l1_35th
+        slave: 1
+        #scan_interval: 5
+        address: 0x5D22
+        input_type: holding
+        unit_of_measurement: "%"
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: uint16
+
+      - name: ABB Armonic Voltage L1 36th
+        unique_id: abb_armonic_voltage_l1_36th
+        slave: 1
+        #scan_interval: 5
+        address: 0x5D23
+        input_type: holding
+        unit_of_measurement: "%"
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: uint16
+
+      - name: ABB Armonic Voltage L1 37th
+        unique_id: abb_armonic_voltage_l1_37th
+        slave: 1
+        #scan_interval: 5
+        address: 0x5D24
+        input_type: holding
+        unit_of_measurement: "%"
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: uint16
+
+      - name: ABB Armonic Voltage L1 38th
+        unique_id: abb_armonic_voltage_l1_38th
+        slave: 1
+        #scan_interval: 5
+        address: 0x5D25
+        input_type: holding
+        unit_of_measurement: "%"
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: uint16
+
+      - name: ABB Armonic Voltage L1 39th
+        unique_id: abb_armonic_voltage_l1_39th
+        slave: 1
+        #scan_interval: 5
+        address: 0x5D26
+        input_type: holding
+        unit_of_measurement: "%"
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: uint16
+
+      - name: ABB Armonic Voltage L1 40th
+        unique_id: abb_armonic_voltage_l1_40th
+        slave: 1
+        #scan_interval: 5
+        address: 0x5D27
+        input_type: holding
+        unit_of_measurement: "%"
+        state_class: measurement
+        scale: 0.1
+        offset: 0
+        precision: 1
+        data_type: uint16
 
       - name: ABB Voltage L2 THD
         unique_id: abb_voltage_l2_thd
