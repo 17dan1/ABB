@@ -1,0 +1,140 @@
+type: custom:plotly-graph
+raw_plotly_config: true
+refresh_interval: 2
+entities:
+  - entity: sensor.abb_voltage_l1_n
+    internal: true
+    fn: |-
+      $fn ({ hass, vars }) => vars.v1 =
+        Number(hass.states['sensor.abb_voltage_l1_n'].state)
+  - entity: sensor.abb_phase_voltage_l1
+    internal: true
+    fn: >-
+      $fn ({ hass, vars }) => vars.ph_v1 =
+      Number(hass.states['sensor.abb_angle_voltage_l1'].state)
+  - entity: sensor.abb_voltage_l2_n
+    internal: true
+    fn: >-
+      $fn ({ hass, vars }) => vars.v2 =
+      Number(hass.states['sensor.abb_voltage_l2_n'].state)
+  - entity: sensor.abb_phase_voltage_l2
+    internal: true
+    fn: >-
+      $fn ({ hass, vars }) => vars.ph_v2 =
+      Number(hass.states['sensor.abb_angle_voltage_l2'].state)
+  - entity: sensor.abb_voltage_l3_n
+    internal: true
+    fn: >-
+      $fn ({ hass, vars }) => vars.v3 =
+      Number(hass.states['sensor.abb_voltage_l3_n'].state)
+  - entity: sensor.abb_phase_voltage_l3
+    internal: true
+    fn: >-
+      $fn ({ hass, vars }) => vars.ph_v3 =
+      Number(hass.states['sensor.abb_angle_voltage_l3'].state)
+  - entity: sensor.abb_current_l1
+    internal: true
+    fn: >-
+      $fn ({ hass, vars }) => vars.i1 =
+      Number(hass.states['sensor.abb_current_l1'].state)*10
+  - entity: sensor.abb_phase_current_l1
+    internal: true
+    fn: >-
+      $fn ({ hass, vars }) => vars.ph_i1 =
+      Number(hass.states['sensor.abb_angle_current_l1'].state)
+  - entity: sensor.abb_current_l2
+    internal: true
+    fn: >-
+      $fn ({ hass, vars }) => vars.i2 =
+      Number(hass.states['sensor.abb_current_l2'].state)*10
+  - entity: sensor.abb_phase_current_l2
+    internal: true
+    fn: >-
+      $fn ({ hass, vars }) => vars.ph_i2 =
+      Number(hass.states['sensor.abb_angle_current_l2'].state)
+  - entity: sensor.abb_current_l3
+    internal: true
+    fn: >-
+      $fn ({ hass, vars }) => vars.i3 =
+      Number(hass.states['sensor.abb_current_l3'].state)*10
+  - entity: sensor.abb_phase_current_l3
+    internal: true
+    fn: >-
+      $fn ({ hass, vars }) => vars.ph_i3 =
+      Number(hass.states['sensor.abb_angle_current_l3'].state)
+  - entity: sensor.abb_voltage_l1_n
+    type: scatterpolar
+    mode: lines
+    name: V1
+    r: $fn ({ vars }) => [0, vars.v1]
+    theta: $fn ({ vars }) => [0, vars.ph_v1]
+    hovertemplate: "V1: %{r:.1f} <br>θ: %{theta:.1f} °"
+    line:
+      color: blue
+      width: 4
+  - entity: sensor.abb_voltage_l2_n
+    type: scatterpolar
+    mode: lines
+    name: V2
+    r: $fn ({ vars }) => [0, vars.v2]
+    theta: $fn ({ vars }) => [0, vars.ph_v2]
+    hovertemplate: "V2: %{r:.1f} <br>θ: %{theta:.1f} °"
+    line:
+      color: lawngreen
+      width: 4
+  - entity: sensor.abb_voltage_l3_n
+    type: scatterpolar
+    mode: lines
+    name: V3
+    r: $fn ({ vars }) => [0, vars.v3]
+    theta: $fn ({ vars }) => [0, vars.ph_v3]
+    hovertemplate: "V3: %{r:.1f} <br>θ: %{theta:.1f} °"
+    line:
+      color: red
+      width: 4
+  - entity: sensor.abb_current_l1
+    type: scatterpolar
+    mode: lines
+    name: I1
+    r: $fn ({ vars }) => [0, vars.i1]
+    theta: $fn ({ vars }) => [0, vars.ph_i1]
+    hovertemplate: "I1: %{customdata:.2f} <br>θ: %{theta:.1f} °"
+    customdata: $fn ({ vars }) => [0, vars.i1 / 10]
+    line:
+      color: blue
+      dash: dot
+      width: 4
+  - entity: sensor.abb_current_l2
+    type: scatterpolar
+    mode: lines
+    name: I2
+    r: $fn ({ vars }) => [0, vars.i2]
+    theta: $fn ({ vars }) => [0, vars.ph_i2]
+    hovertemplate: "I2: %{customdata:.2f} <br>θ: %{theta:.1f} °"
+    customdata: $fn ({ vars }) => [0, vars.i2 / 10]
+    line:
+      color: lawngreen
+      dash: dot
+      width: 4
+  - entity: sensor.abb_current_l3
+    type: scatterpolar
+    mode: lines
+    name: I3
+    r: $fn ({ vars }) => [0, vars.i3]
+    theta: $fn ({ vars }) => [0, vars.ph_i3]
+    hovertemplate: "I3: %{customdata:.2f} <br>θ: %{theta:.1f} °"
+    customdata: $fn ({ vars }) => [0, vars.i3 / 10]
+    line:
+      color: red
+      dash: dot
+      width: 4
+layout:
+  title: Diagramma Fasoriale
+  polar:
+    radialaxis:
+      range:
+        - 0
+        - 260
+grid_options:
+  columns: 18
+  rows: 8
